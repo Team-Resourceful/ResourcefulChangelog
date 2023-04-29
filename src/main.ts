@@ -28,7 +28,7 @@ async function run(): Promise<void> {
         const changelogText = commitMessages
             .reduce<string[]>((acc, message) => {
                 console.log(`message: ${message}`)
-                const match = logRegex.exec(message);
+                const match = message.match(logRegex);
                 console.log(`match: ${match}`);
                 if (match) {
                     console.log(`match[1]: ${match[1]}`)
@@ -39,7 +39,7 @@ async function run(): Promise<void> {
                 console.log(`acc: ${acc}`)
                 return acc;
             }, [])
-            .join('\n\n');
+            .join('');
 
         const changelog = fs.readFileSync(changelogFile, 'utf8');
         const newChangelog = `## ${lastReleaseName}\n\n${changelogText}\n\n${changelog}`;

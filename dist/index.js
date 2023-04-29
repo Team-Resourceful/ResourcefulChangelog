@@ -65,7 +65,7 @@ function run() {
             const changelogText = commitMessages
                 .reduce((acc, message) => {
                 console.log(`message: ${message}`);
-                const match = logRegex.exec(message);
+                const match = message.match(logRegex);
                 console.log(`match: ${match}`);
                 if (match) {
                     console.log(`match[1]: ${match[1]}`);
@@ -76,7 +76,7 @@ function run() {
                 console.log(`acc: ${acc}`);
                 return acc;
             }, [])
-                .join('\n\n');
+                .join('');
             const changelog = fs.readFileSync(changelogFile, 'utf8');
             const newChangelog = `## ${lastReleaseName}\n\n${changelogText}\n\n${changelog}`;
             console.log(`Last release:  ${lastReleaseName}`);
