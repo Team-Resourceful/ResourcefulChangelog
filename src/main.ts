@@ -32,6 +32,7 @@ async function run(): Promise<void> {
                 console.log(`match: ${match}`);
                 if (match) {
                     console.log(`match[1]: ${match[1]}`)
+                    console.log(`groups: ${match.groups?[1]:String}`)
                 }
                 if (match && match[1]) {
                     acc.push(match[1]);
