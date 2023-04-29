@@ -1,0 +1,19 @@
+name: 'Team Resourceful'
+description: 'some action'
+author: 'me'
+inputs:
+  last_release_name: # change this
+    required: true
+    description: 'input description here'
+    default: 'default value if applicable'
+  changelog_file: # change this
+    required: true
+    description: 'input description here'
+    default: 'default value if applicable'
+  github_token: # change this
+    required: true
+    description: 'input description here'
+    default: 'default value if applicable'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
