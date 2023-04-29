@@ -15,12 +15,12 @@ async function run(): Promise<void> {
             owner: repo.owner,
             repo: repo.repo
         });
-        const lastReleaseTag = releaseResponse.data.tag_name;
+        //const lastReleaseTag = releaseResponse.data.tag_name;
 
         const commitsResponse = await octokit.rest.repos.listCommits({
             owner: repo.owner,
             repo: repo.repo,
-            sha: lastReleaseTag
+            since: releaseResponse.data.created_at
         });
         const commitMessages = commitsResponse.data.map((commit) => commit.commit.message);
 
