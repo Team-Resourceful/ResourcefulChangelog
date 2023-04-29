@@ -37,6 +37,10 @@ async function run(): Promise<void> {
 
         const changelog = fs.readFileSync(changelogFile, 'utf8');
         const newChangelog = `## ${lastReleaseName}\n\n${changelogText}\n\n${changelog}`;
+        console.log(`Last release:  ${lastReleaseName}`)
+        console.log(`Changelog text: ${changelogText}`)
+        console.log(`changelog: ${changelog}`)
+        console.log(`new changelog: ${newChangelog}`);
         fs.writeFileSync(changelogFile, newChangelog);
 
         core.setOutput('changelog', newChangelog);
