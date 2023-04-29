@@ -64,10 +64,16 @@ function run() {
             const logRegex = /<log>(.*?)<\/log>/gs;
             const changelogText = commitMessages
                 .reduce((acc, message) => {
+                console.log(`message: ${message}`);
                 const match = logRegex.exec(message);
+                console.log(`match: ${match}`);
+                if (match) {
+                    console.log(`match[1]: ${match[1]}`);
+                }
                 if (match && match[1]) {
                     acc.push(match[1]);
                 }
+                console.log(`acc: ${acc}`);
                 return acc;
             }, [])
                 .join('\n\n');

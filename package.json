@@ -1,6 +1,6 @@
 {
   "name": "custom-github-action",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "Creating github action using typescript",
   "main": "lib/main.js",
