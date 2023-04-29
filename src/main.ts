@@ -26,13 +26,13 @@ async function run(): Promise<void> {
 
         const logRegex = /<log>(.*?)<\/log>/gs;
         const changelogText = commitMessages
-            .map((message) => {
+            .reduce<string[]>((acc, message) => {
                 const match = logRegex.exec(message);
-                if (match) {
-                    return match[1];
+                if (match && match[1]) {
+                    acc.push(match[1]);
                 }
-                return '';
-            })
+                return acc;
+            }, [])
             .join('\n\n');
 
         const changelog = fs.readFileSync(changelogFile, 'utf8');
