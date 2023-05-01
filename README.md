@@ -1,8 +1,8 @@
 # ResourcefulChangelog
 <hr>
 A GitHub action for generating and appending a changelog based on commit messages. 
-Any text between the tags `&lt;log&gt;&lt;/log&gt;` is written to the changelog file. 
-The changelog file is then prepended with the version number as `# -----{ 1.0.0 }-----`.
+Any text between the tags <code>&lt;log&gt;&lt;/log&gt;</code> is written to the changelog file. 
+The changelog file is then prepended with the version number as <code># -----{ 1.0.0 }-----</code>.
 
 ## Example
 
