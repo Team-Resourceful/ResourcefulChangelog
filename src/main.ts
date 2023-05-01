@@ -20,24 +20,25 @@ async function run(): Promise<void> {
             commit => commit.commit.message
         )
 
-        const logRegex = /(.*?)<\/log>/gs
+        const logRegex = /<log>(.*?)<\/log>/gs;
         const changelogText = commits
             .reduce<string[]>((acc, message) => {
-                logRegex.lastIndex = 0
-                const match = logRegex.exec(message)
+                logRegex.lastIndex = 0;
+                const match = logRegex.exec(message);
                 if (match && match[1]) {
-                    acc.push(match[1].trim())
+                    acc.push(match[1].trim());
                 }
-                return acc
-            }, [])
-            .join('\n')
 
-        const changelog = fs.readFileSync(changelogFile, 'utf8')
-        const newChangelog = `# -----{ ${releaseVersion} }-----\n\n${changelogText}\n\n${changelog}`
-        fs.writeFileSync(changelogFile, newChangelog)
-        core.setOutput('changelog', newChangelog)
-        console.log('New changelog generated:')
-        console.log(newChangelog)
+                return acc;
+            }, [])
+            .join('\n');
+
+        const changelog = fs.readFileSync(changelogFile, 'utf8');
+        const newChangelog = `# -----{ ${releaseVersion} }-----\n\n${changelogText}\n\n${changelog}`;
+        fs.writeFileSync(changelogFile, newChangelog);
+        core.setOutput('changelog', newChangelog);
+        console.log("New Changelog Generated:");
+        console.log(newChangelog);
     } catch (error) {
         if (error instanceof Error) core.setFailed(error.message)
     }

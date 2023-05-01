@@ -1,19 +1,19 @@
 name: 'Team Resourceful'
 description: 'some action'
-author: 'me'
+author: 'Team Resourceful'
 inputs:
-  last_release_name: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
-  changelog_file: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
-  github_token: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    release_version:
+        required: true
+        description: 'The version number that gets prepended to the changelog before the changes are listed out.'
+        default: ''
+    changelog_file:
+        required: true
+        description: 'The changelog file to be modified.'
+        default: 'changelog.md'
+    github_token:
+        required: true
+        description: 'A GitHub token to be able to read and parse the commit history.'
+        default: ''
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+    using: 'node16'
+    main: 'dist/index.js'
