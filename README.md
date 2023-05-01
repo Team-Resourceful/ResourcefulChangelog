@@ -1,4 +1,4 @@
-# ResourcefulChangelog
+# Resourceful Changelog
 <hr>
 A GitHub action for generating and appending a changelog based on commit messages. 
 Any text between the tags <code>&lt;log&gt;&lt;/log&gt;</code> is written to the changelog file. 
